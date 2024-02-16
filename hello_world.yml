@@ -1,7 +1,20 @@
-- name: Hello World Sample
-  hosts: all
+- name: Get Date and Time
+  hosts: localhost
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+    - name: Get Date and Time
+      command: date
+      register: current_date_time
+      
+    - debug:
+        msg: "Current Date and Time: {{ current_date_time.stdout }}"
+
+- name: Get User List
+  hosts: localhost
+  tasks:
+    - name: Get User List
+      command: "getent passwd | cut -d: -f1"
+      register: user_list
+      
+    - debug:
+        msg: "User List: {{ user_list.stdout_lines }}"
 
