@@ -1,0 +1,19 @@
+- name: Get Date and Time
+  hosts: all
+  tasks:
+    - name: Get Date and Time
+      command: date
+      register: current_date_time
+      
+    - debug:
+        msg: "Current Date and Time: {{ current_date_time.stdout }}"
+
+- name: Get User List
+  hosts: all
+  tasks:
+    - name: Get User List
+      command: "getent passwd | cut -d: -f1"
+      register: user_list
+      
+    - debug:
+        msg: "User List: {{ user_list.stdout_lines }}"
