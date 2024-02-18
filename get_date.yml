@@ -15,5 +15,5 @@
       register: user_list
       
     - debug:
-        msg: "User List: {{ user_list.stdout_lines }}"
+        msg: "User List: {{ user_list.stdout }}"
 
