@@ -7,14 +7,12 @@
       
     - debug:
         msg: "Current Date and Time: {{ current_date_time.stdout }}"
-
 - name: Get User List
   hosts: all
   tasks:
     - name: Get User List
-      command: "getent passwd | cut -d: -f1"
+      shell: "getent passwd | cut -d: -f1"
       register: user_list
-      shell: true
       
     - debug:
         msg: "User List: {{ user_list.stdout_lines }}"
